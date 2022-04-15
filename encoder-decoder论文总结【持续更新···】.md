@@ -120,7 +120,7 @@ FCN中特征融合的操作是：add
 
 <center>
 
-![FCN-8s](pictures\FCN-8s.png "FCN-8s")
+![FCN-8s](pictures\FCN_8s.png "FCN-8s")
 
 </center>
 ### U-Net

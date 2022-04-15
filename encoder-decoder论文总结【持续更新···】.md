@@ -253,10 +253,10 @@ stride = 1 的空洞卷积的效果：在不减少特征图尺寸的情况下增
 
 #### Deeplab v3+
 
- <div align = center> <img src="pictures/deeplabv3p_1.png "/></div>
+ <div align = center> <img src="pictures/Dlabv3p_1.png "/></div>
  
 
- <div align = center> <img src="pictures/deeplabv3p_2.png "/></div>
+ <div align = center> <img src="pictures/Dlabv3p_2.png "/></div>
  
 
 以上两张图都是对 Deeplab v3+ 结构的描述：ASPP 与 encoder_decoder 结构的组合—— Deeplab v3 作为 encoder，decoder为设计的一个简单的结构（在我看来这个 decoder 就是一个阉割版的 U_Net）

@@ -316,7 +316,7 @@ $$ m \times k_1 + 3 \times 3 \times k_1 \times k_2 $$
 
 参数数量约为Inception的三倍.
 
- <div align = center> <img src="picturesXception_1.png "/></div>
+<div align = center> <img src="pictures/Xception_1.png "/></div>
 
 <div align = center> <img src="pictures/Xception_2.png "/></div>
  

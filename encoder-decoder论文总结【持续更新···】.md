@@ -90,11 +90,8 @@ _ _ _
 **网络结构为：**
 
 ### FCN
-<center>
 
-![FCN结构](pictures\FCN_.png "FCN结构")
-
-</center>
+<div align = center> <img src="pictures/FCN_.png "/></div>
 
 FCN中下采样使用的是：maxpooling  
 FCN中上采样采用的是：转置卷积
@@ -103,34 +100,31 @@ FCN中特征融合的操作是：add
 其中：
 ①直接将 16 * 16 的特征图上采样成 568 * 568 的原始尺寸的结构被称为 **FCN_32s**：
 
-<center>
+ 
 
-![FCN_32s](pictures\FCN_32s.png "FCN_32s")
+<div align = center> <img src="pictures/FCN_32s.png "/></div>
 
-</center>
+ 
 
 ②先将 $\frac{1}{32}$ 的特征图和  $\frac{1}{16}$ 的特征图进行融合，再对融合得到的 $\frac{1}{16}$ 的特征图进行16倍的上采样，得到原始尺寸的图，这样的结构被称为：**FCN_16s**：
 
-<center>
+ 
+<div align = center> <img src="pictures/FCN_16s.png "/></div>
 
-![FCN_16s](pictures\FCN_16s.png "FCN_16s")
-
-</center>
+ 
 
 ②先将 $ \frac{1}{32} $ 的特征图和 $\frac{1}{16}$ 的特征图进行融合，再对融合得到的 $\frac{1}{16}$ 的特征图与 $\frac{1}{8}$ 的特征图进行融合，再对融合得到的 $\frac{1}{8}$ 的特征图进行8倍的上采样得到原始尺寸的图，这样的结构被称为：**FCN_8s**：
 
-<center>
+ 
+<div align = center> <img src="pictures/FCN_8s.png "/></div>
 
-![FCN_8s](pictures\FCN_8s.png "FCN_8s")
-
-</center>
+ 
 ### U_Net
 
-<center>
+ 
+<div align = center> <img src="pictures/U_Net_.png "/></div>
 
-![U_Net结构](pictures\U_Net_.png "U_Net结构")
-
-</center>
+ 
 
 UNet中下采样使用的是：maxpooling  
 UNet中上采样采用的是：转置卷积
@@ -142,11 +136,10 @@ UNet中特征融合的操作是：catch
 
 ### Deconvnet
 
-<center>
+ 
+<div align = center> <img src="pictures/Deconvnet_.png "/></div>
 
-![Deconvnet结构](pictures\Deconvnet_.png "Deconvnet结构")
-
-</center>
+ 
 
 Deconvnet中下采样使用的是：带位置信息的maxpooling  
 Deconvnet中上采样采用的是：带位置信息的unmaxpooling
@@ -156,11 +149,10 @@ Deconvnet中特征融合的操作是：无特征融合
 
 ### SegNet
 
-<center>
+ 
+<div align = center> <img src="pictures/segnet_.png "/></div>
 
-![segnet结构](pictures\segnet_.png "segnet结构")
-
-</center>
+ 
 SegNet中下采样使用的是：带位置信息的maxpooling  
 SegNet中上采样采用的是：带位置信息的unmaxpooling
 SegNet中特征融合的操作是：无特征融合
@@ -193,11 +185,8 @@ SegNet和Deconvnet的结构几乎没有任何不同，网络结构的流程一�
 
 #### FPN
 
-<center>
-
-![FPN_1](pictures\FPN_1.png "FPN_1")
-
-</center>
+<div align = center> <img src="pictures/FPN_1.png "/></div>
+ 
 
 (d)中的结构为 FPN 的结构
 
@@ -208,19 +197,15 @@ SegNet和Deconvnet的结构几乎没有任何不同，网络结构的流程一�
 
 FPN 的结构其实与 U_Net 的结构如出一辙，不同的地方在于输出侧：FPN直接利用上采样+特征融合后的每一层特征进行预测，而 U_Net 仅使用最后一层特征进行预测，如下图：（上面的网络是 U_Net 的结构，下面的网络是 FPN 的结构）
 
-<center>
+ <div align = center> <img src="pictures/FPN_2.png "/></div>
 
-![FPN_2](pictures\FPN_2.png "FPN_2")
 
-</center>
+ 
 
 #### PANet
 
-<center>
-
-![PANet_1](pictures\PANet_1.png "PANet_1")
-
-</center>
+ <div align = center> <img src="pictures/PANet_1.png "/></div>
+ 
 
 结构说明：
 (a) **FPN**  
@@ -230,25 +215,21 @@ FPN 的结构其实与 U_Net 的结构如出一辙，不同的地方在于输出
 (e) **Fully_connected fusion**: 对融合了的2维特征进行conv和residual_like连接，用于稠密预测任务
 
 下图为(c)+(d)的结构：
-<center>
 
-![PANet_2](pictures\PANet_2.png "PANet_2")
-
-</center>
+ <div align = center> <img src="pictures/PANet_2.png "/></div>
+ 
 
 下图为(e)的结构：
 
-<center>
-
-![PANet_3](pictures\PANet_3.png "PANet_3")
-
-</center>
+ <div align = center> <img src="pictures/PANet_3.png "/></div>
+ 
 
 *（挖坑：(c) 中特征融合的时候，各层特征是否有权重呢，这个权重是否可以通过学习来得到呢）*
 
 #### Deeplab v3
 
-![deeplabv3_3](pictures\deeplabv3_3.png "deeplabv3_3")
+<div align = center> <img src="pictures/deeplabv3_3.png "/></div>
+
 
 Deeplab v3 的主要创新点和贡献是：提出了 **ASPP（Atrous Spatial Pyramid Pooling）**
 
@@ -258,36 +239,25 @@ ASPP 就是 Atrous convolution 和 SPP（Spatial Pyramid Pooling）的组合。
 
 ##### Atrous convolution
 
-![kdjj](pictures\kdjj.png "kdjj")
+<div align = center> <img src="pictures/kdjj.png "/></div>
 
 stride = 1 的空洞卷积的效果：在不减少特征图尺寸的情况下增大感受野，如下图为空洞卷积的朴素的应用：
 
-![deeplabv3_1](pictures\deeplabv3_1.png "deeplabv3_1")
-
+<div align = center> <img src="pictures/deeplabv3_1.png "/></div>
 
 ##### SPP（Spatial Pyramid Pooling）
 
-<center>
-
-![deeplabv3_2](pictures\deeplabv3_2.png "deeplabv3_2")
-
-</center>
+ <div align = center> <img src="pictures/deeplabv3_2.png "/></div>
 
 将原本串联的特征金字塔的特征变成并联的，在并联结构中使用的是不同大小卷积核的卷积，并将它们concat起来（必要时回对小的特征进行上采样，上采样操作一般为双线性插值），这样最终得到的特征就具有各种感受野（粗细粒度）的特征且具有较高分辨率。
 
 #### Deeplab v3+
 
-<center>
+ <div align = center> <img src="pictures/deeplabv3plus_1.png "/></div>
+ 
 
-![deeplabv3plus_1](pictures\deeplabv3plus_1.png "deeplabv3plus_1")
-
-</center>
-
-<center>
-
-![deeplabv3plus_2](pictures\deeplabv3plus_2.png "deeplabv3plus_2")
-
-</center>
+ <div align = center> <img src="pictures/deeplabv3plus_2.png "/></div>
+ 
 
 以上两张图都是对 Deeplab v3+ 结构的描述：ASPP 与 encoder_decoder 结构的组合—— Deeplab v3 作为 encoder，decoder为设计的一个简单的结构（在我看来这个 decoder 就是一个阉割版的 U_Net）
 
@@ -308,13 +278,13 @@ DeepLabv3的编码器特征通常在输出步幅=16的情况下进行计算。�
 第二步：对得到的特征集合进行 1*1 的卷积，得到融合了原始特征所有通道维度信息的特征
 如下图所示：
 
-![DSC_1](pictures\DSC_1.png "DSC_1")
+<div align = center> <img src="pictures/DSC_1.png "/></div>
 
-![DSC_2](pictures\DSC_2.png "DSC_2")
+<div align = center> <img src="pictures/DSC_2.png "/></div>
 
 while，常规的卷积操作如图所示：
 
-![DSC_3](pictures\DSC_3.png "DSC_3")
+<div align = center> <img src="pictures/DSC_3.png "/></div>
 
 我们来比较两种卷积的参数量，首先，我们考察常规卷积的参数量（以上面的图中的参数为例）：
 
@@ -330,7 +300,7 @@ $$ N_{separable} = N_{depthwise} + N_{pointwise} = 39 $$
 
 在原文中，作者使用的是深度可分离空洞卷积，如下图示：
 
-![DSC_4](pictures\DSC_4.png "DSC_4")
+<div align = center> <img src="pictures/DSC_4.png "/></div>
 
 ##### Modified Aligned Xception
 
@@ -346,15 +316,10 @@ $$ m \times k_1 + 3 \times 3 \times k_1 \times k_2 $$
 
 参数数量约为Inception的三倍.
 
-<center>
+ <div align = center> <img src="picturesXception_1.png "/></div>
 
-![Xception_1.png](pictures\Xception_1.png "Xception_1.png")
-
-
-
-![Xception_2.png](pictures\Xception_2.png "Xception_2.png")
-
-</center>
+<div align = center> <img src="pictures/Xception_2.png "/></div>
+ 
 
 如果Inception是将 3 * 3 卷积分成3组，那么考虑一种极端的情况，我们如果将Inception的 1 * 1 得到的 $ k_1 $ 个通道的Feature Map完全分开呢？如下图所示。也就是使用 $ k_1 $ 个不同的卷积分别在每个通道上进行卷积，它的参数数量是：
 
@@ -366,33 +331,30 @@ $$ m \times k_1 + 3 \times 3 \times k_2 $$
 
 它的参数数量是普通卷积的 $ \frac{1}{k_1} $ ，我们把这种形式的Inception叫做Extreme Inception。如下图所示： 
 
-<center>
-
-![Xception_3.png](pictures\Xception_3.png "Xception_3.png")
-
-</center>
+ <div align = center> <img src="pictures/Xception_3.png "/></div>
+ 
 
 多层的 Extreme Inception 被称作 Xception。
 
 Xception模型在ImageNet上显示了具有潜力的图像分类结果，并且运算速度很快。MSRA团队修改了Xception模型（称为Aligned Xception），并进一步提高了目标检测任务的性能。受这些发现的启发，Deeplab v3+ 朝着相同的方向努力以使Xception模型适应语义图像分割的任务。特别是，Deeplab v3+ 在MSRA修改的基础上进行了一些其他更改，即（1）更深的Xception，不同之处在于Deeplab v3+ 不修改entry flow网络结构以实现快速计算和存储效率，（2）全部max pooling操作被有步长的深度可分离卷积替代，这使 Deeplab v3+ 能够应用空洞可分离卷积以任意分辨率提取特征图（另一种选择是将空洞算法扩展到最大池化操作），以及（3）额外批处理，每进行3×3深度卷积后，就添加归一化和ReLU激活，类似于MobileNet设计。改进后的 Xception 结构如下图所示：
 
-![Xception_4.png](pictures\Xception_4.png "Xception_4.png")
+<div align = center> <img src="pictures/Xception_4.png "/></div>
 
 > 总结：深度可分离卷积在我看来和Xception几乎是等价的，区别之一就是 Xception 先计算Pointwise卷积再计算Depthwise的卷积，while 先计算深度可分离卷积再计算 Depthwise的卷积。
 
 Xception 的效果如下所示（此处 Xception 和 ResNet 参数量相同）：
 
-![Xception_5.png](pictures\Xception_5.png "Xception_5.png")
+<div align = center> <img src="pictures/Xception_5.png "/></div>
 
 可以看出 Xception 相较于 ResNet 是有优势的。
 
 #### BiFPN
 
-![BiFPN_1.png](pictures\BiFPN_1.png "BiFPN_1.png")
+<div align = center> <img src="pictures/BiFPN_1.png "/></div>
 
 BiFPN 的 backbone 直接使用的是 EffecientNet 的结构，其贡献为创造了一个 decoder，其 decoder 结构如下图 (d) 所示：
 
-![BiFPN_2.png](pictures\BiFPN_2.png "BiFPN_2.png")
+<div align = center> <img src="pictures/BiFPN_2.png "/></div>
 
 在上图中，(a) 结构为基础的 FPN 的结构。(b) 结构为 PANet 的 decoder 结构。(c) 结构为 NAS_FPN 的 decoder 结构。
 
@@ -404,17 +366,14 @@ BiFPN 的效果为：
 
 BiFPN 的效果如下图所示：
 
-<center>
+ <div align = center> <img src="pictures/BiFPN_3.png "/></div>
 
-![BiFPN_3.png](pictures\BiFPN_3.png "BiFPN_3.png")
-
-![BiFPN_4.png](pictures\BiFPN_4.png "BiFPN_4.png")
-
-</center>
+<div align = center> <img src="pictures/BiFPN_4.png "/></div>
+ 
 
 ##### EffecientNet
 
-![EffecientNet_1](pictures\EffecientNet_1.png "EffecientNet_1")
+<div align = center> <img src="pictures/EffecientNet_1.png "/></div>
 
 EffecientNet的作者通过尝试和求解规划问题（NAS技术）来确定使得 ①计算量和参数量在一定范围内 ②效果最好  的网络结构参数：**depth**、**number of channals (width)**、**resolution**。
 
@@ -424,11 +383,11 @@ EffecientNet的作者通过尝试和求解规划问题（NAS技术）来确定�
 
 下图中 (d) 中的结构即为 EfficientFPN 的结构：
 
-![EffecienFPN_1](pictures\EffecienFPN_1.png "EffecienFPN_1")
+<div align = center> <img src="pictures/EffecienFPN_1.png "/></div>
 
 下图为更细节的 EfficientFPN 的结构：
 
-![EffecienFPN_2](pictures\EffecienFPN_2.png "EffecienFPN_2")
+<div align = center> <img src="pictures/EffecienFPN_2.png "/></div>
 
 EffecientFPN 结构整体上来说，核心思想还是 **融合低层次细粒度的信息和高层次粗粒度的信息** ：作者使用尺寸较小的特征图$(\frac{1}{32})$来生成 codewords , 在 codewords 中有较为全局的特征，但是细节不够。使用尺寸较大的特征图$(\frac{1}{8})$来提取细粒度的信息；最后将两种层次的信息进行融合。
 
@@ -442,7 +401,7 @@ EffecientFPN 结构整体上来说，核心思想还是 **融合低层次细粒�
 EffecientFPN 的效果如下图所示：
 简而言之就是：参数更少、计算量更小、效果更好。
 
-![EffecienFPN_3](pictures\EffecienFPN_3.png "EffecienFPN_3")
+<div align = center> <img src="pictures/EffecienFPN_3.png "/></div>
 
 现在，我们对于 FPN_base 的结构的介绍就告一段落。
 下面开始介绍创新点在 **decoder 的设计** 上的结构
@@ -463,7 +422,8 @@ EffecientFPN 的效果如下图所示：
 作者提出了一种参数可学习的 **上采样** 操作。该上采样的基本想法是将 groundtruth 的图变到 CNN　backbone　的最后一层特征图大小。
 
 作者提出的 decoder 的结构为：
-![DUpsampling_3](pictures\DUpsampling_3.png "DUpsampling_3")
+
+<div align = center> <img src="pictures/DUpsampling_3.png "/></div>
 
 **解释**：
 
@@ -490,15 +450,13 @@ $$ x = Pv; \tilde{v} = Wx $$
 
 作者融合特征的操作如下图所示：
 
-![DUpsampling_1](pictures\DUpsampling_1.png "DUpsampling_1")
+<div align = center> <img src="pictures/DUpsampling_1.png "/></div>
 
 作者提出的 DUpsampling 的效果是优于 bilinear 的，如图：
 
-<center>
+ <div align = center> <img src="pictures/DUpsampling_2.png "/></div>
 
-![DUpsampling_2](pictures\DUpsampling_2.png "DUpsampling_2")
-
-</center>
+ 
 
 *（挖坑：上面的特征融合操作将各尺寸的特征平等化，但是我们是否可以设置一个可学习的权重参数呢？）*
 
@@ -508,7 +466,7 @@ $$ x = Pv; \tilde{v} = Wx $$
 
 bilinear additive upsampling（+conv）的结构如下图所示：
 
-![bnu_1](pictures\bau_1.png "bau_1")
+<div align = center> <img src="pictures/bau_1.png "/></div>
 
 上采样操作步骤：
 ① 对尺寸为 [H,W] 的 D 维通道的特征图进行逐通道维的双线性插值
@@ -518,7 +476,7 @@ bilinear additive upsampling（+conv）的结构如下图所示：
 
 bilinear additive upsampling（+conv）的效果如下图所示：
 
-![bnu_2](pictures\bau_2.png "bau_2")
+<div align = center> <img src="pictures/bau_2.png "/></div>
 
 该结构在多数任务上都取得了较好的效果（接近甚至超过 SOTA）。
 
@@ -534,19 +492,14 @@ loading...
 
 整体的网络结构为：
 
-<center>
+ <div align = center> <img src="pictures/RefineNet_1.png "/></div>
 
-![RefineNet_1](pictures\RefineNet_1.png "RefineNet_1")
-
-</center>
+ 
 
 RefineNet 结构的具体细节为：
 
-<center>
-
-![RefineNet_2](pictures\RefineNet_2.png "RefineNet_2")
-
-</center>
+ <div align = center> <img src="pictures/RefineNet_2.png "/></div>
+ 
 
 ### 其他网络结构
 
@@ -555,42 +508,31 @@ RefineNet 结构的具体细节为：
 网络的整体结构如下图所示：
 网络由多个串联的沙漏状的 encoder_decoder 结构组成。
 
-<center>
-
-![hourglass_1](pictures\hourglass_1.png "hourglass_1")
-
-</center>
+ <div align = center> <img src="pictures/hourglass_1.png "/></div>
+ 
 
 我在看了代码之后，将整个网络的结构更细节地梳理了出来：
 整个网络结构可分为三个层次：
 
 ①**第一层次**：最基本的 Residual 模块：
 
-<center>
-
-![hourglass_2](pictures\hourglass_2.png "hourglass_2")
-
-</center>
+ 
+<div align = center> <img src="pictures/hourglass_2.png "/></div>
+ 
 
 解释：该模块由 **Relu**、**Batch Normonization**、**$ 1 \times 1$ convolution**、**$ 3 \times 3$ convolution**、**残差链接** 组成
 
 ②**第二层次**：hourglass 模块
 
-<center>
-
-![hourglass_3](pictures\hourglass_3.png "hourglass_3")
-
-</center>
+ <div align = center> <img src="pictures/hourglass_3.png "/></div>
+ 
 
 解释：该模块由 **Residual 模块**、**下采样**、**上采样** 组成
 
 ③**第三层次**：整个网络
 
-<center>
-
-![hourglass_4](pictures\hourglass_4.png "hourglass_4")
-
-</center>
+ <div align = center> <img src="pictures/hourglass_4.png "/></div>
+ 
 
 解释：该模块由 **hourglass 模块**、**Residual 模块**、**下采样**、**$ 1 \times 1$ convolution**、**$ 7 \times 7$ convolution**、**残差连接** 组成。在每一个 **hourglass 模块** 后都进行 loss 的计算，以优化对网络参数的学习。
 
@@ -608,11 +550,8 @@ RefineNet 结构的具体细节为：
 
 对转置卷积而言，我们实际上是想建立一个逆向操作，即 一对多的映射关系。对于上例，我们想要建立的其实是输出矩阵中的 1 个值与输入矩阵中的 9 个值的关系，如下图所示：
 
-<center>
-
-![zzjj_1](pictures\zzjj_1.png "zzjj_1")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_1.png "/></div>
+ 
 
 当然，从信息论的角度上看，常规卷积操作是不可逆的，所以转置卷积并不是通过输出矩阵和卷积核计算原始输入矩阵，而是计算得到保持了相对位置关系的矩阵。
 
@@ -620,71 +559,47 @@ RefineNet 结构的具体细节为：
 
 定义一个 **4×4 输入矩阵 input**：
 
-<center>
-
-![zzjj_2](pictures\zzjj_2.png "zzjj_2")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_2.png "/></div>
+ 
 
 再定义一个 **3×3 标准卷积核 kernel**：
 
-<center>
-
-![zzjj_3](pictures\zzjj_3.png "zzjj_3")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_3.png "/></div>
+ 
 
 设 步长 stride=1、填充 padding=0，则按 "valid" 卷积模式，可得 **2×2 输出矩阵 output**：
 
-<center>
-
-![zzjj_4](pictures\zzjj_4.png "zzjj_4")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_4.png "/></div>
+ 
 
 这里，换一个表达方式，将输入矩阵 input 和输出矩阵 output 展开成 **16×1 列向量 X 和 4×1 列向量 Y**，可分别表示为：
 
-<center>
-
-![zzjj_5](pictures\zzjj_5.png "zzjj_5")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_5.png "/></div>
+ 
 
 接着，再用矩阵运算来描述标准卷积运算，设有 **新卷积核矩阵 C**：
 
-<center>
-
-![zzjj_6](pictures\zzjj_6.png "zzjj_6")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_6.png "/></div>
+ 
 
 经推导 (卷积运算关系)，可得 **4×16 稀疏矩阵 C**：
 
-![zzjj_7](pictures\zzjj_7.png "zzjj_7")
+<div align = center> <img src="pictures/zzjj_7.png "/></div>
 
 以下，用下图展示矩阵运算过程：
 
-<center>
-
-![zzjj_8](pictures\zzjj_8.png "zzjj_8")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_8.png "/></div>
+ 
 
 而转置卷积其实就是要对这个过程进行逆运算，即 **通过 C 和 Y 得到 X**：
 
-<center>
-
-![zzjj_9](pictures\zzjj_9.png "zzjj_9")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_9.png "/></div>
+ 
 
 此时，$ C^T $ 即为新的 **16×4 稀疏矩阵**。以下通过下图展示转置后的卷积矩阵运算。此处，**用于转置卷积的权重矩阵**  $ C^T $ 不一定来自于原卷积矩阵 $ C $ (通常不会如此恰巧)，但其形状和原卷积矩阵 $ C $ 的转置相同。
 
-<center>
-
-![zzjj_10](pictures\zzjj_10.png "zzjj_10")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_10.png "/></div>
+ 
 
 最后，将 16×1 的输出结果重新排序，即可通过 2×2 输入矩阵得到 4×4 输出矩阵。
 
@@ -694,59 +609,38 @@ RefineNet 结构的具体细节为：
 
 同样，使用上文中的 **3×3 卷积核矩阵 C**：
 
-<center>
-
-![zzjj_11](pictures\zzjj_11.png "zzjj_11")
-
-</center>
+<div align = center> <img src="pictures/zzjj_11.png "/></div>
+ 
 
 **输出矩阵 output** 仍为：
 
-<center>
-
-![zzjj_12](pictures\zzjj_12.png "zzjj_12")
-
-</center>
+<div align = center> <img src="pictures/zzjj_12.png "/></div>
+ 
 
 将输出矩阵展开为 **列向量 Y**：
 
-<center>
-
-![zzjj_13](pictures\zzjj_13.png "zzjj_13")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_13.png "/></div>
+ 
 
 带入到上文中的转置卷积计算公式，则转置卷积的计算结果为：
 
-<center>
-
-![zzjj_14](pictures\zzjj_14.png "zzjj_14") 
-
-</center>
+ <div align = center> <img src="pictures/zzjj_14.png "/></div>
+ 
 
 这其实等价于 **先填充 padding=2 的输入矩阵 input**：
 
-<center>
-
-![zzjj_15](pictures\zzjj_15.png "zzjj_15")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_15.png "/></div>
+ 
 
 然后，**转置标准卷积核 kernel**：
 
-<center>
-
-![zzjj_16](pictures\zzjj_16.png "zzjj_16")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_16.png "/></div>
+ 
 
 最后，在 **填零的输入矩阵 input** 上使用 **经转置的标准卷积核 kernel** 执行 **标准卷积运算**，如下图所示：
 
-<center>
-
-![zzjj_17](pictures\zzjj_17.png "zzjj_17")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_17.png "/></div>
+ 
 
 更一般地，对于卷积核尺寸 kernel size = $ k $，步长 stride = $ s $ = 1，填充 padding = $ p $ = 0 的转置卷积，其 **等价的标准卷积** 在原尺寸为 $ p' $ 的输入矩阵上进行运算，输出特征图的尺寸 $ o' $ 为：
 
@@ -765,27 +659,18 @@ $$ o'= \frac{i'' _ k + 2p }{s'} + 1 = i' + 2(k _ 1) _k + 1 = (i' _ 1) + k $$
 
 以下，令输入尺寸为 **5×5**，标准卷积核同上  kernel size = $k$ = **3**，步长  stride = $ s $ = 2，填充  padding = $ p $ = 0，标准卷积运算后，输出矩阵尺寸为 **2×2**：
 
-<center>
-
-![zzjj_18](pictures\zzjj_18.png "zzjj_18")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_18.png "/></div>
+ 
 
 此处，转换后的稀疏矩阵尺寸变为 25×4，由于矩阵太大这里不展开进行罗列。最终转置卷积的结果为：
 
-<center>
-
-![zzjj_19](pictures\zzjj_19.png "zzjj_19")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_19.png "/></div>
+ 
 
 此时，等价于 **输入矩阵同时添加了 空洞 和 填充**，再由仅转置的标准卷积核进行运算，过程如图 7 所示：
 
-<center>
-
-![zzjj_20](pictures\zzjj_20.png "zzjj_20")
-
-</center>
+ <div align = center> <img src="pictures/zzjj_20.png "/></div>
+ 
 
 更一般地，对于卷积核尺寸 kernel size = $k$，步长 stride = $s$ > 1，填充 padding = $p$ = 0 的转置卷积，其 等价的标准卷积 在原尺寸为 $i'$ 的输入矩阵上进行运算，输出特征图的尺寸 $o'$ 为： 
 
@@ -830,19 +715,13 @@ $$ o'  = \frac{i'' - k + 2p}{s'} + 1 =s(i' - 1) + 2k -1 - k + 1 = s(i' _ 1) + k 
 
 首先，转置卷积的结构如下图所示：
 
-<center>
-
-![TC_1](pictures\TC_1.png "TC_1")
-
-</center>
+ <div align = center> <img src="pictures/TC_1.png "/></div>
+ 
 
 转置卷积 output 中的每一个像素中的信息对于 input 中像素的依赖关系为：
 
-<center>
-
-![TC_2](pictures\TC_2.png "TC_2")
-
-</center>
+ <div align = center> <img src="pictures/TC_2.png "/></div>
+ 
 
 由上图可以看出：转置卷积 output 中的每一个像素中的信息并不是均匀的，**而正是这种信息的不均匀，导致了 棋盘效应 的出现**
 
@@ -850,21 +729,15 @@ $$ o'  = \frac{i'' - k + 2p}{s'} + 1 =s(i' - 1) + 2k -1 - k + 1 = s(i' _ 1) + k 
 
 分解转置卷积与转置卷积思路相同，但是在处理上有区别：**分解转置卷积在 x、y 两个维度分开填充 0，这样可以使得需要学习的参数量更少**，分解转置卷积的结构和其 output 对于 input 的信息依赖关系如图所示：
 
-<center>
-
-![DTC_2](pictures\DTC_1.png "DTC_2")
-
-</center>
+ <div align = center> <img src="pictures/DTC_1.png "/></div>
+ 
 
 由上图可以看出：虽然分解转置卷积与转置卷积相比，具有更少的参数量，但是分解转置卷积会 **引入更严重的 棋盘效应**
 
 ### Depth_To_Space
 
-<center>
-
-![DTS_1](pictures\DTS_1.png "DTS_1")
-
-</center>
+ <div align = center> <img src="pictures/DTS_1.png "/></div>
+ 
 
 该 decoder 将 4 个小尺寸的特征图拼接起来，形成一个大尺寸的特征图。
 
@@ -876,11 +749,8 @@ $$ o'  = \frac{i'' - k + 2p}{s'} + 1 =s(i' - 1) + 2k -1 - k + 1 = s(i' _ 1) + k 
 
 output 和 input 的角上的像素对其，如下图所示：
 
-<center>
-
-![acT_1](pictures\acT_1.png "acT_1")
-
-</center>
+ <div align = center> <img src="pictures/acT_1.png "/></div>
+ 
 
 示例：
 
@@ -903,11 +773,8 @@ tensor([[[[1.0000, 1.3333, 1.6667, 2.0000],
 
 utput 和 input 的角上的像素对其，如下图所示：
 
-<center>
-
-![acF_1](pictures\acF_1.png "acF_1")
-
-</center>
+ <div align = center> <img src="pictures/acF_1.png "/></div>
+ 
 
 示例：
 
@@ -946,11 +813,8 @@ tensor([[[[1.0000, 1.2500, 1.7500, 2.0000],
 
 + Panqu Wang,Pengfei Chen, et al.**Understanding Convolution for Semantic Segmentation**.//WACV 2018
 
-<center>
-
-![kdjj_1](pictures\kdjj_1.png "kdjj_1")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_1.png "/></div>
+ 
 
 通过上图a解释了空洞卷积存在的问题，从左到右属于top_bottom关系，三层卷积均为r=2的dilatedConv,可以看出最上层的红色像素的感受野为13且参与实际计算的只有75%，很容易看出其存在的问题。
 
@@ -958,11 +822,8 @@ tensor([[[[1.0000, 1.2500, 1.7500, 2.0000],
 
 + Fisher Yu, et al. **Dilated Residual Networks**. //CVPR 2017
 
-<center>
-
-![kdjj_2](pictures\kdjj_2.png "kdjj_2")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_2.png "/></div>
+ 
 
 如果特征map有比空洞率更高频的内容，则grid问题更明显。
 
@@ -970,11 +831,8 @@ tensor([[[[1.0000, 1.2500, 1.7500, 2.0000],
 
 **Removing max pooling**：由于maxpool会引入更高频的激活，这样的激活会随着卷积层往后传播，使得grid问题更明显。
 
-<center>
-
-![kdjj_3](pictures\kdjj_3.png "kdjj_3")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_3.png "/></div>
+ 
 
 **Adding layers**：在网络最后增加更小空洞率的残参block, 有点类似于HDC。
 
@@ -982,59 +840,41 @@ tensor([[[[1.0000, 1.2500, 1.7500, 2.0000],
 
 + Zhengyang Wang,et al.**Smoothed Dilated Convolutions for Improved Dense Prediction**.//KDD 2018.
 
-<center>
-
-![kdjj_4](pictures\kdjj_4.png "kdjj_4")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_4.png "/></div>
+ 
 
 空洞卷积的分解观点，在原始特征图上周期性采样形成4组分辨率降低的特征图，然后使用原始的空洞卷积参数(去掉了空洞0)分别进行卷积，之后将卷积的结果进行上采样组合。**从该分解观点可以看出，卷积前后的4个组之间没有相互依赖，使得收集到不一致的局部信息**
 
-<center>
-
-![kdjj_5](pictures\kdjj_5.png "kdjj_5")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_5.png "/></div>
+ 
 
 从上面分解的观点出发：
 
 (1) 在最后生成的4组卷积结果之后，**经过一层组交错层**，类似于ShuffleNet，使得每组结果能进行相互交错，相互依赖，以此解决局部信息不一致的问题。
 
-<center>
+ <div align = center> <img src="pictures/kdjj_6.png "/></div>
 
-![kdjj_6](pictures\kdjj_6.png "kdjj_6")
-
-![kdjj_7](pictures\kdjj_7.png "kdjj_7")
-
-</center>
+<div align = center> <img src="pictures/Fkdjj_7.png "/></div>
+ 
 
 (2) 第二种方法为在空洞卷积之前进行局部信息依赖，即增加一层卷积操作，卷积利用了分离卷积，并且所有通道共享参数。
 
-<center>
+ <div align = center> <img src="pictures/kdjj_8.png "/></div>
 
-![kdjj_8](pictures\kdjj_8.png "kdjj_8")
-
-![kdjj_9](pictures\kdjj_9.png "kdjj_9")
-
-</center>
+<div align = center> <img src="pictures/kdjj_9.png "/></div>
+ 
 
 + Liang_Chieh Chen,et al.**Rethinking Atrous Convolution for Semantic Image Segmentation**//2017
 
 deeplabv3在v2基础上进一步探索空洞卷积，分别研究了级联ASPP与并联ASPP两种结构。
 
-<center>
-
-![kdjj_10](pictures\kdjj_10.png "kdjj_10")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_10.png "/></div>
+ 
 
 deeplabv3不同于deeplabv2，在resnet101基础上 **级联** 了更深的网络，随着深度的增加，使用了不同的空洞率的卷积，这些卷积保证分辨率不降低的情况下，感受野可以任意控制，一般让空洞率成倍增加。同时使用了Multigrid策略，在同一个blocks的不同层使用分层的空洞率，如2,4,8，而不是都使用2，这样使得感受野相比原来的有所增加。**但这样同样会存在grid问题**
 
-<center>
-
-![kdjj_11](pictures\kdjj_11.png "kdjj_11")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_11.png "/></div>
+ 
 
 ASPP存在的问题，当使用的空洞率增大时，有效的滤波参数数量逐渐减小。极端的，当r等于特征图大小时，该卷积没有捕获整幅图像的上下文信息，而是退化为1*1卷积
 
@@ -1044,19 +884,13 @@ ASPP存在的问题，当使用的空洞率增大时，有效的滤波参数数�
 
 ESPNet利用分解卷积的思想，先用1*1卷积将通道数降低减少计算量，后面再加上基于空洞卷积的金字塔模型，捕获多尺度信息
 
-<center>
-
-![kdjj_12](pictures\kdjj_12.png "kdjj_12")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_12.png "/></div>
+ 
 
 之前的方法都是通过引入新的计算量，学习新的参数来解决grid问题。**而这里直接使用了特征分层的思想直接将不同rate的空洞卷积的输出分层sum，其实就是将不同的感受野相加，弥补了空洞带来的网格效应**。从结果上看效果不错
 
-<center>
-
-![kdjj_13](pictures\kdjj_13.png "kdjj_13")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_13.png "/></div>
+ 
 
 训练技巧：
 
@@ -1066,19 +900,13 @@ ESPNet利用分解卷积的思想，先用1*1卷积将通道数降低减少计�
 
 + Tianyi Wu,et al.**Tree_structured Kronecker Convolutional Networks for Semantic Segmentation**.//ICME 2019
 
-<center>
-
-![kdjj_14](pictures\kdjj_14.png "kdjj_14")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_14.png "/></div>
+ 
 
 使用Kronecker convolution来解决空洞卷积局部信息丢失问题，以r1=4、r2=3为例，KConv将每个标准卷积的元素都乘以一个相同的矩阵，该矩阵由0,1组成，这样参数量是不增加的。该矩阵为：
 
-<center>
-
-![kdjj_15](pictures\kdjj_15.png "kdjj_15")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_15.png "/></div>
+ 
 
 这样每个元素乘以矩阵后变为上面右图所示的图。因此，可以看出r1控制空洞的数量，也即扩大了感受野，而r2控制的是每个空洞卷积忽视的局部信息。当r2=1时，其实就是空洞卷积，当r2=r1=1时就是标准卷积。
 
@@ -1088,11 +916,8 @@ ESPNet利用分解卷积的思想，先用1*1卷积将通道数降低减少计�
 
 + Hyojin Park,et al.**Concentrated_Comprehensive Convolutionsfor lightweight semantic segmentation**.//2018
 
-<center>
-
-![kdjj_16](pictures\kdjj_16.png "kdjj_16")
-
-</center>
+ <div align = center> <img src="pictures/kdjj_16.png "/></div>
+ 
 
 针对实时语义分割提出的网络结构，深度分离卷积与空洞卷积的组合，在ESPNet上做的实验。并且说明简单的组合会带来精度的降低，由于局部信息的丢失。为此，在深度分离空洞卷积之前，使用了两级一维分离卷积捕获局部信息。
 
@@ -1108,27 +933,18 @@ Fast Normalized Fusion 效果为：
 
 Fast normalized fusion的速度为 Softmax_based fusion 的1.3倍左右，但是效果几乎一样。如下图所示：
 
-<center>
-
-![FNF_1](pictures\FNF_1.png "FNF_1")
-
-</center>
+ <div align = center> <img src="pictures/FNF_1.png "/></div>
+ 
 
 具体地，Fast Normalized Fusion 的结构为：
 
-<center>
-
-![FNF_2](pictures\FNF_2.png "FNF_2")
-
-</center>
+ <div align = center> <img src="pictures/FNF_2.png "/></div>
+ 
 
 while，Softmax_based fusion 的结构为：
 
-<center>
-
-![FNF_3](pictures\FNF_3.png "FNF_3")
-
-</center>
+ <div align = center> <img src="pictures/FNF_3.png "/></div>
+ 
 
 # chapter 3 自己的思考
 在看了上述的 encoder-decoder 结构之后，我对于之后的研究有以下思考：

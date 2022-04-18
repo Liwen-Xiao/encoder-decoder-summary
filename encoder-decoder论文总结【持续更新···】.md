@@ -341,6 +341,8 @@ $$ m \times k_1 + 3 \times 3 \times k_2 $$
 
 多层的 Extreme Inception 被称作 Xception。
 
+Inception、Xception 本质上是用 **通道信息融合程度** 来换 **参数量、计算成本**，因为最后 concat 得到的特征图中不同片段之间信息是独立的，但是，从一个 Xception 单元来看，他们是独立的，但是在多个 Xception 串联起来看，每个 concat 后的特征图都会输入到 下一个 Xception 单元的 $ 1 \times 1 conv $ 里，信息再次被融合。所以我们可以认为：常规卷积对信息的融合 **冗余** 了，就像一直在搅拌一杯充分溶解的糖水，吃力不讨好。
+
 Xception模型在ImageNet上显示了具有潜力的图像分类结果，并且运算速度很快。MSRA团队修改了Xception模型（称为Aligned Xception），并进一步提高了目标检测任务的性能。受这些发现的启发，Deeplab v3+ 朝着相同的方向努力以使Xception模型适应语义图像分割的任务。特别是，Deeplab v3+ 在MSRA修改的基础上进行了一些其他更改，即（1）更深的Xception，不同之处在于Deeplab v3+ 不修改entry flow网络结构以实现快速计算和存储效率，（2）全部max pooling操作被有步长的深度可分离卷积替代，这使 Deeplab v3+ 能够应用空洞可分离卷积以任意分辨率提取特征图（另一种选择是将空洞算法扩展到最大池化操作），以及（3）额外批处理，每进行3×3深度卷积后，就添加归一化和ReLU激活，类似于MobileNet设计。改进后的 Xception 结构如下图所示：
 
 <div align = center> <img src="pictures/Xception_4.png "/></div>

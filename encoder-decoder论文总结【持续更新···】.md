@@ -29,7 +29,7 @@
 > + **EfficientFCN** *(TPAMI 2021)*
 
 
-空洞卷积的改进：
+对空洞卷积的改进：
 > + **Understanding Convolution for Semantic Segmentation** *(WACV 2018)*
 > + **Dilated Residual Networks** *(CVPR 2017)*
 > + **Smoothed Dilated Convolutions for Improved Dense Prediction** *KDD 2018*
@@ -145,11 +145,11 @@ UNet中特征融合的操作是：catch
 
  
 
-Deconvnet中下采样使用的是：带位置信息的maxpooling  
-Deconvnet中上采样采用的是：带位置信息的unmaxpooling
+Deconvnet中下采样使用的是：maxpooling  
+Deconvnet中上采样采用的是：转置卷积
 Deconvnet中特征融合的操作是：无特征融合
 
-在Deconvnet的结构中，没有特征融合操作，之所以称其为Residual_like的结构，是因为其decoder的unpooling中使用的位置信息是在encoder的maxpooling中得到的。值得注意的是，在代码中，decoder中的卷积操作是使用的转置卷积（不带上采样的卷积操作，在我看来和普通卷积操作没什么区别？这点还没去试过）
+在Deconvnet的结构中，没有特征融合操作。值得注意的是，在代码中，decoder中的卷积操作是使用的转置卷积（Chapter 2 中有证明：不带上采样的转置卷积与标准卷积没有区别）
 
 ### SegNet
 
@@ -161,9 +161,10 @@ SegNet中下采样使用的是：带位置信息的maxpooling
 SegNet中上采样采用的是：带位置信息的unmaxpooling
 SegNet中特征融合的操作是：无特征融合
 
-SegNet和Deconvnet的结构几乎没有任何不同，网络结构的流程一模一样，为数不多不同的地方为：
-①每层特征图的尺寸不同
-②在代码中，SegNet中decoder的卷积采用的是普通卷积，while Deconvnet中采用的是转置卷积，但我认为不改变特征图尺寸的转置卷积和 stride=1 的普通卷积没有区别
+在 SegNet 的结构中，没有特征融合操作，之所以称其为Residual-like的结构，是因为其decoder的unpooling中使用的位置信息是在encoder的maxpooling中得到的。
+SegNet和Deconvnet的结构的区别：
+①每层特征图的尺寸不同：DeconvNet 中有全连接层，而 SegNet 全为卷积层
+②在代码中，SegNet中 decoder 的上采样使用的带位置信息的 填充0的上采样，while Deconvnet中采用的是转置卷积上采样
 
 >**总结2**：Deconvnet和SegNet中的**带坐标信息的maxpooling**和**带坐标信息的unpooling**（这两个上下采样操作的具体操作会在 chapter 2 中详细介绍）与 FCN 中的**maxpooling**和**转置卷积**的区别:
 

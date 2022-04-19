@@ -739,9 +739,9 @@ $$ o'  = \frac{i'' - k + 2p}{s'} + 1 =s(i' - 1) + 2k -1 - k + 1 = s(i' _ 1) + k 
  <div align = center> <img src="pictures/DTC_1.png "/></div>
  
 
-由上图可以看出：虽然分解转置卷积与转置卷积相比，具有更少的参数量，但是分解转置卷积会 **引入更严重的 棋盘效应**
+由上图可以看出：虽然分解转置卷积与转置卷积相比，具有更少的参数量，但是分解转置卷积仍然会有 **棋盘效应**
 
-### Depth_To_Space
+### Depth-To-Space
 
  <div align = center> <img src="pictures/DTS_1.png "/></div>
  

@@ -469,6 +469,22 @@ $$ x = Pv; \tilde{v} = Wx $$
 
 >补充：这篇文章里作者提出的前提假设很有意思，可供我们以后的科研上参考：segmatic segmentation label Y 中像素的分布并不是独立同分布的，每一个像素的值与周围像素的值是有一定关系的，所以我们可以将原始尺寸的 Y 压缩为小尺寸的向量而不导致信息的过多丢失。不仅仅是 segmentation, 大部分的稠密预测任务都具有这样的特点
 
+
+#### NRD
+
+<div align = center> <img src="pictures/NRD_1.png "/></div>
+
+与 DUpsampling 相同的 **前提假设**：每个 label 的 patch 的分布是冗余的，我们可以用其他方式来 represent label 的 patch，在本文中作者使用的方法为：**Neural network representations** ————用神经网络来表示 $ 2^{8 \times 8} $ 种 $ 8 \times 8$ patch 的可能分布（在我看来就是用非线性层做 decoder，和 DUpsampling 相对比，DUpsampling 是用一个 **矩阵变换** 做 decoder，是个线性变换（作者在文中就提到 DUpsampling ，虽然没有明说，指出其为线性变换，有局限性）这里是用非线性的网络层） 
+
+这里先介绍这个 **用来表示 patch 的神经网络 $g_{\theta_i}$**：说白了就是输入某个 patch 的一些特征，输出该 patch 上的分类结果。在文中，它就是连续的三个 $ 1 \times 1 $ 卷积（当然，每一个卷积包括 conv + Relu + BN），输出的 channel 数为要分类的类数，具体地，假设我们使用 Cityscapes 这个数据集，也就是要分的类为 19 类，且考察 $8 \times 8$ patch，则网络的参数为：$weight: (2+16) \times 16(conv 1)  +  16 \times 16 (conv 2)  +16 \times 19(conv 3); bias: 16(conv 1)+16(conv 2)+19(conv 3)$，每个 patch 对应的参数为 899 个。
+
+接下来我们考虑  **$g_{\theta_i}$ 的输入和参数** ，
+首先考虑**输入**：输入是将 $ \frac{1}{4} $ 的特征图（算是低层次特征图）划分成 $ 8 \times 8$ 大小的 patchs，并使用 $1 \times 1$ 的卷积将其通道降为16，设这样得到的其中一个 patch 的名字为 $ P_i $, $8 \times 8 \times 16$ 的 $ P_i $ 会与一个 $8 \times 8 \times 2$ 的**坐标矩阵** concat 起来，作为 **$g_{\theta_i}$ 的输入**，这个$8 \times 8 \times 2$ 的**坐标矩阵** 是 $[0: \frac{1}{8} : 1] \times [0: \frac{1}{8} : 1] \in R^{8 \times 8 \times 2}$ (其中 $\times$表示笛卡尔乘积) 
+然后我们考虑**参数**：backbone 继续做卷积操作（这个 backbone 作者用过 Deeplab v3+ 和 ResNet，其中 conv 使用的是 $ 3 \times 3$ ，channel = 512 的卷积），最后的输出特征图为尺寸为 $ \frac{1}{32} $ 的特征图，对这个 $ \frac{1}{32} $ 进行 $ 1 \times 1 $ 的卷积操作得到 $C$ 通道输出（ $C$ 是每个 patch 的网络参数个数，也就是 899）（注意，现在得到的 $\frac{1}{32} \times \frac{1}{32} \times 899$ 的 tensor 中，每一个 $1 \times 1 \times 899$ 正好对应一个 patch 的 $g_{\theta_i}$ 的参数，因为 $32 = 4 \times 8$），将 $\frac{1}{32} \times \frac{1}{32} \times 899$ 这个 tensor 中的元素 reshape 进入 $g_{\theta_i}$ 中作为网络的参数
+
+训练流程为：用每一个 $g_{\theta_i}$ 输出的预测拼接起来并进行 $\times 4$ 的bilinear 上采样，得到预测图 $Y'$，将 $Y'$ 与 GT $Y$ 做 loss，以训练网络（先训练得到 $\theta'$, 然后将 $\theta'$ 与反向传播前的 $\theta$ 做loss，训练 backbone 里的参数）。
+
+
 #### bilinear additive upsampling（+conv）
 
 bilinear additive upsampling（+conv）的结构如下图所示：
@@ -487,9 +503,7 @@ bilinear additive upsampling（+conv）的效果如下图所示：
 
 该结构在多数任务上都取得了较好的效果（接近甚至超过 SOTA）。
 
-#### NRD
 
-loading...
 
 ### Branch 3 U_Net_Pro
 

@@ -484,6 +484,12 @@ $$ x = Pv; \tilde{v} = Wx $$
 
 训练流程为：用每一个 $g_{\theta_i}$ 输出的预测拼接起来并进行 $\times 4$ 的bilinear 上采样，得到预测图 $Y'$，将 $Y'$ 与 GT $Y$ 做 loss，以训练网络（先训练得到 $\theta'$, 然后将 $\theta'$ 与反向传播前的 $\theta$ 做loss，训练 backbone 里的参数）。
 
+>小启示：
+>1. 利用 patch 的信息冗余性，压缩 patch
+>2. 用非线性层来做decoder，而不是线性变换
+>3. 坐标矩阵（coordinate 矩阵）很有用
+
+
 
 #### bilinear additive upsampling（+conv）
 

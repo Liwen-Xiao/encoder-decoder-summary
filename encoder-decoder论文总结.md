@@ -2,6 +2,8 @@
 
 ---
 
+author: Liwen Xiao, HUST AIAHonorclass19
+
 # 序言
 这篇文章是作者在学习encoder-decoder的网络结构的过程中，阅读相关文献，对文献的总结、归纳和结合自己的理解完成的一篇文章。若有错误敬请指出，本人不胜感激。
 
